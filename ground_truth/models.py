@@ -4,13 +4,13 @@ import json
 
 class Audio(models.Model):
     music = models.BooleanField(default=True)
-    artist = models.CharField(max_length=50, null=True)
-    title = models.CharField(max_length=50, null=True)
+    artist = models.CharField(max_length=100, null=True)
+    title = models.CharField(max_length=100, null=True)
     filename = models.CharField(max_length=50)
     transcript = models.TextField(null=True)
     coverart_colour = models.CharField(max_length=50)
-    slug = models.SlugField(unique=True)
-    _ground_truth = models.CharField(max_length=1000)
+    slug = models.SlugField(unique=True, max_length=255)
+    _ground_truth = models.CharField(max_length=2000)
 
     @property
     def ground_truth(self):
