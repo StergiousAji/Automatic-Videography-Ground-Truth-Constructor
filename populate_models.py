@@ -35,9 +35,7 @@ for audio in audios:
 def populate_audio(audios):
     for audio_info in audios:
         a = audio_info['fields']
-        audio = Audio(music=a['music'], artist=a['artist'], title=a['title'], filename=a['filename'], transcript=a['transcript'], coverart_colour=a['coverart_colour'], _ground_truth="null")
-        if a['slug'] in ['nena-99-luftballons', 'coldplay-viva-la-vida']:
-            audio._ground_truth = a['_ground_truth']
+        audio = Audio(music=a['music'], artist=a['artist'], title=a['title'], filename=a['filename'], transcript=a['transcript'], coverart_colour=a['coverart_colour'], _ground_truth=a['_ground_truth'])
         audio.save(True)
 
 def populate_chunks(chunks):
