@@ -17,9 +17,9 @@
     </div>
 
     <div class="section-groundTruth">
-    {% if audio.ground_truth != "null" %}
+    {% if ground_truth != "null" %}
         <h1 id="hdGroundTruth">Ground Truth</h1>
-        <pre id="preGroundTruth" class="prettyprint lang-scm">{{ audio.ground_truth }}</pre>
+        <pre id="preGroundTruth" class="prettyprint lang-scm">{{ ground_truth }}</pre>
 
         <a href="{% static 'ground_truth/'|add:audio.filename|add:'.json' %}" download>
             <button class="btn btn-primary button-start" id="btnDownload">Download</button>

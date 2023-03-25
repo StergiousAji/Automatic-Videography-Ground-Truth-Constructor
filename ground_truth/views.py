@@ -34,8 +34,6 @@ IMAGE_PATHS = np.array(IMAGE_PATHS)
 # clip = CLIP(IMAGE_PATHS, IMAGE_VECTOR_PATH, multilingual=False)
 clip = None
 
-# TODO: COPY DJANGO MODELS
-
 def home(request):
     link_form = LinkForm()
     audio_path = None
@@ -153,7 +151,7 @@ def chunk(request, audio_slug, chunk_slug):
 
         redirect_chunk = chunk.slug
         if 'finish' in post:
-            build_ground_truth(audio, Chunk.objects.filter(audio__slug=audio_slug).order_by("index"), IMAGE_PATHS, SRC_FOLDER)
+            # build_ground_truth(audio, Chunk.objects.filter(audio__slug=audio_slug).order_by("index"), IMAGE_PATHS, SRC_FOLDER)
             return redirect(reverse('ground_truth:ground-truth', kwargs={'audio_slug': audio.slug}))
         elif 'previous' in post:
             redirect_chunk = f"chunk-{chunk.index - 1}"
@@ -191,7 +189,12 @@ def video(request, audio_slug):
 
 
 def ground_truth(request, audio_slug):
-    return render(request, 'ground_truth/ground_truth.html', {'audio': Audio.objects.get(slug=audio_slug)})
+    audio = Audio.objects.get(slug=audio_slug)
+    filename = audio.filename
+    with open(f"{filename}.json", 'r', encoding='utf-8') as gt_json:
+        ground_truth = gt_json.read()
+    
+    return render(request, 'ground_truth/ground_truth.html', {'audio': audio, 'ground_truth': ground_truth})
 
 
 def about(request):

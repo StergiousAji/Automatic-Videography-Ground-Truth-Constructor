@@ -8,7 +8,6 @@ from ground_truth.models import Audio, Chunk
 import json
 import numpy as np
 
-# TODO: RESET DATABASE
 Audio.objects.all().delete()
 Chunk.objects.all().delete()
 
