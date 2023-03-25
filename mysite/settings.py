@@ -36,6 +36,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app']
+
 # FORM SUBMISSION
 # Comment out the following line and place your railway URL, and your production URL in the array.
 # CSRF_TRUSTED_ORIGINS = ["*"]
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ground_truth',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [

@@ -8,6 +8,10 @@ from ground_truth.models import Audio, Chunk
 import json
 import numpy as np
 
+# TODO: RESET DATABASE
+Audio.objects.all().delete()
+Chunk.objects.all().delete()
+
 
 with open(r"audios.json", "r", encoding='utf-16') as file:
     audios = json.load(file)
