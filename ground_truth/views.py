@@ -190,8 +190,7 @@ def video(request, audio_slug):
 
 def ground_truth(request, audio_slug):
     audio = Audio.objects.get(slug=audio_slug)
-    filename = audio.filename
-    with open(f"{filename}.json", 'r', encoding='utf-8') as gt_json:
+    with open(os.path.join(SRC_FOLDER, "ground_truth", f"{audio.filename}.json"), 'r', encoding='utf-8') as gt_json:
         ground_truth = gt_json.read()
     
     return render(request, 'ground_truth/ground_truth.html', {'audio': audio, 'ground_truth': ground_truth})
