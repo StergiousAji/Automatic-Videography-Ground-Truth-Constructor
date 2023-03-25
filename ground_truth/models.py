@@ -10,7 +10,7 @@ class Audio(models.Model):
     transcript = models.TextField(null=True, max_length=2000)
     coverart_colour = models.CharField(max_length=50)
     slug = models.SlugField(unique=True, max_length=255)
-    _ground_truth = models.CharField(max_length=2000)
+    _ground_truth = models.TextField(max_length=2000)
 
     @property
     def ground_truth(self):
