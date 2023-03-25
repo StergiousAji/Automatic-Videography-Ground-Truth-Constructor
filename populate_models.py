@@ -27,7 +27,7 @@ for audio in audios:
 
 order = np.argsort([11, 0, 10, 1, 3, 4, 9, 7, 5, 8, 6, 2])
 print(order)
-audios = np.array(audios)[order]
+audios = np.array(audios)[order][:10]
 for audio in audios:
     print(audio['pk'], audio['fields']['slug'])
 

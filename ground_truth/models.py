@@ -6,7 +6,7 @@ class Audio(models.Model):
     music = models.BooleanField(default=True)
     artist = models.CharField(max_length=100, null=True)
     title = models.CharField(max_length=100, null=True)
-    filename = models.CharField(max_length=50)
+    filename = models.CharField(max_length=80)
     transcript = models.TextField(null=True, max_length=2000)
     coverart_colour = models.CharField(max_length=50)
     slug = models.SlugField(unique=True, max_length=255)
