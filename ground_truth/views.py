@@ -128,6 +128,8 @@ def audio(request, audio_slug):
         'instrumental': instrumental,
         'ground_truth_built': os.path.exists(os.path.join(SRC_FOLDER, "ground_truth", f"{audio.filename}.json")),
     }
+    print(os.path.exists(os.path.join(SRC_FOLDER, "ground_truth", f"{audio.filename}.json")))
+    print(os.path.join(SRC_FOLDER, "ground_truth", f"{audio.filename}.json"))
     return render(request, 'ground_truth/audio.html', context)
 
 
